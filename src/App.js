@@ -1,23 +1,35 @@
 import React from 'react';
-import { getBasicHeroInfoById } from './requests';
 import './App.css';
 import Nav from './Components/Nav/Nav';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 import HeroesFeatured from './Components/HeroesFeatured/HeroesFeatured';
 
-
-
 function App() {
-  
-
   return (
     <>
-    <Nav></Nav>
-    <main>
-      <div className="container">
-      <HeroesFeatured />
-      </div>
-    </main>
+    <Router>
+      <Nav />
+      <main>
+        <div className="container">
+          <Switch>
+            <Route exact path="/">
+              <HeroesFeatured />
+            </Route>
+            <Route exact path="/search">
+            </Route>
+            <Route path="/hero/:id">
+            </Route>
+          </Switch>
+        </div>
+      </main>
     <footer></footer>
+
+    </Router>
+    
     </>
   );
 }
